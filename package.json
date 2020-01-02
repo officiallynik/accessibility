@@ -1,0 +1,28 @@
+{
+  "name": "accessibility-testing-tool",
+  "version": "1.0.0",
+  "description": "Identifies accessibility issues in websites.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all --parallel dev:server",
+    "dev:server": "webpack-dev-server --hot --inline",
+    "build": "webpack -p"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-watch": "^6.0.1",
+    "jquery": "^3.4.1",
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "accessibility-developer-tools": "^2.12.0"
+  }
+}
