@@ -20,6 +20,7 @@ const inputsHaveAutoComplete = () => {
         str: "Add autocomplete='INPUT PURPOSE'"
       };
       errors.push({
+        rule: 'WCAG 2.1: 1.3.5',
         error: error("AutoComplete is missing in input tag."),
         snippet: snippet(input.outerHTML),
         fix: fix(fixObj)
@@ -46,6 +47,7 @@ const sectionsHaveAriaTag = () => {
         str: "Add role='PURPOSE'"
       };
       warnings.push({
+        rule: 'WCAG 2.1: 1.3.6',
         warning: error(
           "Using ARIA landmarks to identify regions of a page is Missing."
         ),

@@ -20,6 +20,7 @@ const isTouchable = () => {
                 str: (width<44? "Increase Width to atleast 44px": "Increase Height to atleast 44px")
             }
             warnings.push({
+                rule: 'WCAG 2.1: 2.5.5',
                 warning: error('Touchable element size is less than the minimum required'),
                 snippet: snippet(TOUCHABLE.outerHTML),
                 fix: fix(fixObj)

@@ -30,7 +30,6 @@ const htmlCheck = () => {
   errors.htmlError.push(html.hasIframeTitle());
   errors.htmlError.push(html.hasVideoTrack());
   errors.htmlError.push(html.hasAudioTrack());
-  errors.htmlError.push(html.hasPositiveTabIndex());
   errors.htmlError.push(html.hasDuplicateIds());
   errors.htmlError.push(html.replaceWithStrongTag());
 

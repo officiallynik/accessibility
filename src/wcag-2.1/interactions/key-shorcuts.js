@@ -13,6 +13,7 @@ const hasSingleKeyShortcut = () => {
             str: "Avoid using Single Key Shortcuts"
         }
         errors.push({
+            rule: 'WCAG 2.1: 2.1.4',
             error: error(`Single Key Shortcuts found: ${e.key}.`),
             snippet: snippet('none'),
             fix: fix(fixObj)

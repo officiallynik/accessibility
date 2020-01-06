@@ -1,4 +1,4 @@
-//2.5.3, 1.4.13 and commented out features in html check 
+//2.5.3, 1.4.13
 
 import * as dom from '../../utils/dom';
 import error from '../../utils/error';
@@ -21,6 +21,7 @@ const hasLinksTarget = () => {
                 str: "Add aria-describedby='ELEMENT ID'"
             }
             warnings.push({
+                rule: 'WCAG 2.1: 2.5.3',
                 warning: error(warningMessage),
                 snippet: snippet(link.outerHTML),
                 fix: fix(fixObj)
@@ -44,6 +45,7 @@ const hasButtonsText = () => {
                 str: "Add aria-label='VALUE' or <button>VALUE</button>"
             }
             errors.push({
+                rule: 'WCAG 2.1: 2.5.3',
                 error: error(warningMessage),
                 snippet: snippet(button.outerHTML),
                 fix: fix(fixObj)
@@ -62,6 +64,7 @@ const hasForLabel = () => {
                 str: "Add for='INPUT ID'"
             }
             errors.push({
+                rule: 'WCAG 2.1: 2.5.3',
                 error: error('For is missing in label.'),
                 snippet: snippet(label.outerHTML),
                 fix: fix(fixObj)
@@ -83,6 +86,7 @@ const hasFormsLabel = () => {
             str: "Add aria-label, aria-labelledby"
         }
         errors.push({
+            rule: 'WCAG 2.1: 2.5.3',
             error: error('Forms Label is missing.'),
             snippet: snippet('<form>'),
             fix: fix(fixObj)

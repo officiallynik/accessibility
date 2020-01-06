@@ -13,6 +13,7 @@ const isAnimated = () => {
                 str: "Provide ways to diasble Animations to Users"
             }
             warnings.push({
+                rule: 'WCAG 2.1: 2.3.3',
                 warning: error('Animations are present.'),
                 snippet: snippet(el.outerHTML),
                 fix: fix(fixObj)

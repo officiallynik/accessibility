@@ -14,6 +14,7 @@ const hasDocumentType = () => {
       str: "Add <!DOCTYPE html>"
     }
     errors.push({
+        rule: 'WCAG 2.0: 4.1.1',
         error: error('Doctype is missing.'),
         snippet: snippet('none'),
         fix: fix(fixObj)
@@ -29,6 +30,7 @@ const hasDocumentTitle = () => {
       str: "<title>WELL DESCRIBED TITLE</title>"
     }
     errors.push({
+        rule: 'WCAG 2.0: 2.4.2',
         error: error('Title is missing.'),
         snippet: snippet('none'),
         fix: fix(fixObj)
@@ -51,6 +53,7 @@ const hasDocumentLanguage = () => {
         str: "Add lang='LANGUAGE VALUE' to <html>"
       }
       errors.push({
+          rule: 'WCAG 2.0: 3.1.1',
           error: error('Language value is missing in HTML element.'),
           snippet: snippet('<html>...</html>'),
           fix: fix(fixObj)
@@ -70,6 +73,7 @@ const hasDocumentMetaCharset = () => {
       str: "Add <meta charset='utf-8'/>"
     }
     errors.push({
+        rule: 'WCAG',
         error: error('Document encoding is missing.'),
         snippet: snippet('<head>...</head>'),
         fix: fix(fixObj)
@@ -90,6 +94,7 @@ const hasDocumentScalable = () => {
       str: "Remove user-scalable=no from <meta name=viewport>"
     }
     errors.push({
+        rule: 'WCAG',
         error: error('Document must not use the user-scalable=no.'),
         snippet: snippet('none'),
         fix: fix(fixObj)
@@ -109,6 +114,7 @@ const hasHeadingOnce = () => {
       str: "Use only one <h1> in the page."
     }
     errors.push({
+        rule: 'WCAG',
         error: error('Page has Multi <h1> tag.'),
         snippet: snippet('none'),
         fix: fix(fixObj)
@@ -130,6 +136,7 @@ const hasImagesAlt = () => {
         str: "Add alt='IMAGE WELL DESCRIBED'"
       }
       errors.push({
+          rule: 'WCAG 2.0: H37',
           error: error('Image Alt is missing.'),
           snippet: snippet(image.outerHTML),
           fix: fix(fixObj)
@@ -140,6 +147,7 @@ const hasImagesAlt = () => {
         str: "Add src='<source>'"
       }
       errors.push({
+          rule: 'WCAG 2.0: H37',
           error: error('Image Source is missing.'),
           snippet: snippet(image.outerHTML),
           fix: fix(fixObj)
@@ -164,6 +172,7 @@ const hasLinksText = () => {
         str: "DESCRIBE PURPOSE OF LINK"
       }
       warnings.push({
+          rule: 'WCAG 2.0: 2.4.4 & WCAG 2.0: 2.4.9',
           warning: error(warningMessage),
           snippet: snippet(link.outerHTML),
           fix: fix(fixObj)
@@ -190,6 +199,7 @@ const hasLinksHref = () => {
         str: "Add href='LINK URL'"
       }
       errors.push({
+          rule: 'WCAG 2.0: 2.4.9',
           error: error('Link Href is missing.'),
           snippet: snippet(link.outerHTML),
           fix: fix(fixObj)
@@ -214,6 +224,7 @@ const hasSVGRole = () => {
       str: "Add role='img' or (aria-hidden='true' if you need to hide element from SR)."
     }
     errors.push({
+        rule: 'WCAG 2.0: 4.1.2',
         error: error('SVG Role is missing.'),
         snippet: snippet('none'),
         fix: fix(fixObj)
@@ -234,6 +245,7 @@ const hasIframeTitle = () => {
       str: "Add title='DESCRIBE CONTENT OF FRAME'"
     }
     errors.push({
+        rule: 'WCAG 2.0: H64',
         error: error('Title is missing in iframe.'),
         snippet: snippet('<iframe>'),
         fix: fix(fixObj)
@@ -252,6 +264,7 @@ const hasVideoTrack = () => {
       str: "Add <track> element with subtitles, captions"
     }
     errors.push({
+        rule: 'WCAG 2.0: H96',
         error: error('Video track is missing.'),
         snippet: snippet('<video>'),
         fix: fix(fixObj)
@@ -270,29 +283,9 @@ const hasAudioTrack = () => {
       str: "Add <track> element with subtitles, captions"
     }
     errors.push({
+        rule: 'WCAG 2.0: 1.2.3',
         error: error('Audio track is missing.'),
         snippet: snippet('<audio>'),
-        fix: fix(fixObj)
-    })
-  }
-  return errors;
-};
-
-const hasPositiveTabIndex = () => {
-  var errors = [];
-  const ALLELEMENTS = [...dom.getElements("*")];
-  const elementsWithTabindex = ALLELEMENTS.filter(
-    element => dom.getAttribute(element, "tabindex") > 0
-  );
-  const hasPositiveindex = elementsWithTabindex.length > 0;
-
-  if (hasPositiveindex) {
-    let fixObj = {
-      str: 'Remove/Replace tabindex=">0"'
-    }
-    errors.push({
-        error: error('Avoid using positive integer values for tabindex.'),
-        snippet: snippet('none'),
         fix: fix(fixObj)
     })
   }
@@ -313,6 +306,7 @@ const hasDuplicateIds = () => {
       str: "Remove/Replace duplicate id"
     }
     errors.push({
+        rule: 'WCAG 2.0: 4.1.1',
         error: error('Avoid duplicate ids, ID must be unique.'),
         snippet: snippet('none'),
         fix: fix(fixObj)
@@ -330,6 +324,7 @@ const replaceWithStrongTag = () => {
         str: `Replace with <em> or <strong> tags`
       }
       errors.push({
+          rule: 'WCAG 2.0',
           error: error(`Avoid using ${tag.outerHTML}.`),
           snippet: snippet(tag.outerHTML),
           fix: fix(fixObj)
@@ -352,7 +347,6 @@ export {
   hasIframeTitle,
   hasVideoTrack,
   hasAudioTrack,
-  hasPositiveTabIndex,
   hasDuplicateIds,
   replaceWithStrongTag,
   hasDocumentMetaCharset

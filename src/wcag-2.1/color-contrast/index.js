@@ -42,6 +42,7 @@ const ContrastPlugin = () => {
       }
 
       errors.push({
+        rule: 'WCAG 2.1: 1.4.11 & WCAG 2.0: 1.4.3',
           error: error(`Contrast Ratio Required is not Satisfied, Required: ${requiredRatio}, Found: ${contrastRatio}`),
           snippet: snippet(el.outerHTML),
           fix: fix(fixObj)
